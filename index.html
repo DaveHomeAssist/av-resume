@@ -16,23 +16,21 @@
     --bg: #1a1a1a;
     --black: #0a0a0a;
     --white: #f0ece4;
-    --cream: #e8e2d6;
+    --cream: #d8d2c6;
     --gold: #d4a843;
-    --gold-dim: #b8922e;
-    --blue: #3a6ea5;
+    --gold-dim: #c49a38;
     --charcoal: #1a1a1a;
-    --gray: #888;
-    --accent-glow: rgba(212, 168, 67, 0.15);
+    --gray: #aaa;
     --sidebar-bg: linear-gradient(180deg, #111 0%, #0d0d0d 100%);
     --sidebar-border: rgba(212, 168, 67, 0.15);
-    --tag-border: rgba(212, 168, 67, 0.2);
-    --tag-bg: rgba(212, 168, 67, 0.04);
-    --tag-hl-border: rgba(212, 168, 67, 0.45);
-    --tag-hl-bg: rgba(212, 168, 67, 0.1);
+    --tag-border: rgba(212, 168, 67, 0.25);
+    --tag-bg: rgba(212, 168, 67, 0.06);
+    --tag-hl-border: rgba(212, 168, 67, 0.5);
+    --tag-hl-bg: rgba(212, 168, 67, 0.12);
     --glow-gold: rgba(212, 168, 67, 0.08);
     --glow-blue: rgba(58, 110, 165, 0.06);
     --union-bg: rgba(212, 168, 67, 0.08);
-    --union-border: rgba(212, 168, 67, 0.2);
+    --union-border: rgba(212, 168, 67, 0.25);
     --rule-gradient: rgba(212, 168, 67, 0.3);
     --job-bar: var(--gold);
     --bullet-border: var(--gold);
@@ -44,32 +42,27 @@
       --bg: #f5f3ef;
       --black: #ffffff;
       --white: #1a1a1a;
-      --cream: #333;
-      --gold: #9a7520;
-      --gold-dim: #7d6018;
-      --gray: #666;
+      --cream: #444;
+      --gold: #8a6818;
+      --gold-dim: #6d5212;
+      --gray: #777;
       --sidebar-bg: linear-gradient(180deg, #eae7e0 0%, #e4e0d8 100%);
-      --sidebar-border: rgba(154, 117, 32, 0.2);
-      --tag-border: rgba(154, 117, 32, 0.25);
-      --tag-bg: rgba(154, 117, 32, 0.06);
-      --tag-hl-border: rgba(154, 117, 32, 0.5);
-      --tag-hl-bg: rgba(154, 117, 32, 0.12);
-      --glow-gold: rgba(154, 117, 32, 0.06);
+      --sidebar-border: rgba(138, 104, 24, 0.2);
+      --tag-border: rgba(138, 104, 24, 0.3);
+      --tag-bg: rgba(138, 104, 24, 0.06);
+      --tag-hl-border: rgba(138, 104, 24, 0.5);
+      --tag-hl-bg: rgba(138, 104, 24, 0.12);
+      --glow-gold: rgba(138, 104, 24, 0.06);
       --glow-blue: rgba(58, 110, 165, 0.04);
-      --union-bg: rgba(154, 117, 32, 0.08);
-      --union-border: rgba(154, 117, 32, 0.25);
-      --rule-gradient: rgba(154, 117, 32, 0.3);
+      --union-bg: rgba(138, 104, 24, 0.08);
+      --union-border: rgba(138, 104, 24, 0.3);
+      --rule-gradient: rgba(138, 104, 24, 0.3);
       --job-bar: var(--gold);
       --bullet-border: var(--gold);
     }
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  @page {
-    size: letter;
-    margin: 0;
-  }
 
   a.skip-link {
     position: absolute;
@@ -94,18 +87,20 @@
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    padding: 20px;
+    padding: 40px 20px;
+    line-height: 1.6;
   }
 
   .page {
-    width: 8.5in;
-    min-height: 11in;
+    width: 100%;
+    max-width: 960px;
     background: var(--black);
     position: relative;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 2.6in 1fr;
+    grid-template-columns: 280px 1fr;
     grid-template-rows: auto 1fr;
+    border-radius: 4px;
   }
 
   .page::before {
@@ -135,7 +130,7 @@
   .sidebar {
     grid-row: 1 / -1;
     background: var(--sidebar-bg);
-    padding: 32px 22px 24px 22px;
+    padding: 40px 28px 32px;
     border-right: 1px solid var(--sidebar-border);
     position: relative;
     z-index: 1;
@@ -155,12 +150,12 @@
   }
 
   .name-block {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .name-block h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 34px;
+    font-size: 40px;
     letter-spacing: 3px;
     line-height: 1;
     color: var(--white);
@@ -172,26 +167,26 @@
 
   .title-line {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
     letter-spacing: 3.5px;
     text-transform: uppercase;
     color: var(--gold);
-    margin-top: 4px;
-    padding-bottom: 12px;
+    margin-top: 6px;
+    padding-bottom: 16px;
     border-bottom: 1px solid var(--tag-border);
   }
 
   .sidebar-section {
-    margin-top: 16px;
+    margin-top: 24px;
   }
 
   .sidebar-section-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 3px;
     color: var(--gold);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     position: relative;
     padding-left: 0;
   }
@@ -199,17 +194,17 @@
   .sidebar-section-title::after {
     content: '';
     display: block;
-    width: 20px;
+    width: 24px;
     height: 1px;
     background: var(--gold);
-    margin-top: 3px;
+    margin-top: 4px;
     opacity: 0.5;
   }
 
   .contact-list {
     list-style: none;
-    font-size: 9.5px;
-    line-height: 1.8;
+    font-size: 14px;
+    line-height: 2;
     color: var(--cream);
     font-weight: 400;
   }
@@ -217,44 +212,44 @@
   .contact-list li {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
   }
 
   .contact-list .label {
     color: var(--gray);
     font-weight: 500;
-    font-size: 8px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    min-width: 48px;
+    min-width: 52px;
   }
 
   .skill-group {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
 
   .skill-group-label {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: var(--gray);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 5px;
   }
 
   .skill-tag {
-    font-size: 8.5px;
+    font-size: 12px;
     font-weight: 500;
-    padding: 2px 7px;
+    padding: 3px 10px;
     border: 1px solid var(--tag-border);
-    border-radius: 2px;
+    border-radius: 3px;
     color: var(--cream);
     background: var(--tag-bg);
     letter-spacing: 0.3px;
@@ -269,39 +264,39 @@
 
   .cert-list {
     list-style: none;
-    font-size: 9px;
-    line-height: 1.9;
+    font-size: 14px;
+    line-height: 2;
     color: var(--cream);
   }
 
   .cert-list li::before {
     content: '\25B8';
     color: var(--gold);
-    margin-right: 6px;
-    font-size: 8px;
+    margin-right: 8px;
+    font-size: 11px;
   }
 
   .education-item {
-    font-size: 9px;
+    font-size: 14px;
     color: var(--cream);
-    line-height: 1.6;
-    margin-bottom: 6px;
+    line-height: 1.5;
+    margin-bottom: 10px;
   }
 
   .education-item .school {
     font-weight: 600;
     color: var(--white);
-    font-size: 9.5px;
+    font-size: 14px;
   }
 
   .education-item .detail {
     color: var(--gray);
-    font-size: 8.5px;
+    font-size: 13px;
   }
 
   /* RIGHT COLUMN */
   .main {
-    padding: 32px 28px 24px 26px;
+    padding: 40px 36px 32px 32px;
     position: relative;
     z-index: 1;
     display: flex;
@@ -310,18 +305,18 @@
   }
 
   .section {
-    margin-bottom: 14px;
+    margin-bottom: 28px;
   }
 
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 15px;
+    font-size: 22px;
     letter-spacing: 4px;
     color: var(--gold);
-    margin-bottom: 8px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
 
   .section-title::after {
@@ -332,17 +327,17 @@
   }
 
   .summary-text {
-    font-size: 10px;
-    line-height: 1.65;
+    font-size: 15px;
+    line-height: 1.7;
     color: var(--cream);
-    font-weight: 300;
+    font-weight: 400;
     max-width: 100%;
   }
 
   .job {
-    margin-bottom: 12px;
+    margin-bottom: 24px;
     position: relative;
-    padding-left: 12px;
+    padding-left: 16px;
   }
 
   .job::before {
@@ -361,20 +356,20 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 2px;
-    gap: 8px;
+    margin-bottom: 4px;
+    gap: 12px;
   }
 
   .job-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--white);
     letter-spacing: 0.5px;
   }
 
   .job-date {
-    font-size: 8.5px;
+    font-size: 13px;
     color: var(--gold-dim);
     font-weight: 500;
     letter-spacing: 1px;
@@ -383,34 +378,34 @@
   }
 
   .job-company {
-    font-size: 9.5px;
+    font-size: 14px;
     color: var(--gold);
     font-weight: 500;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     letter-spacing: 0.5px;
   }
 
   .job-bullets {
     list-style: none;
-    font-size: 9px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.7;
     color: var(--cream);
-    font-weight: 300;
+    font-weight: 400;
   }
 
   .job-bullets li {
-    padding-left: 10px;
+    padding-left: 16px;
     position: relative;
-    margin-bottom: 1px;
+    margin-bottom: 4px;
   }
 
   .job-bullets li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 6px;
-    width: 4px;
-    height: 4px;
+    top: 9px;
+    width: 5px;
+    height: 5px;
     border: 1px solid var(--bullet-border);
     border-radius: 1px;
     transform: rotate(45deg);
@@ -420,28 +415,28 @@
   .credits-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4px 16px;
-    font-size: 9px;
+    gap: 8px 24px;
+    font-size: 14px;
     line-height: 1.7;
   }
 
   .credit-item {
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 8px;
     color: var(--cream);
-    font-weight: 300;
+    font-weight: 400;
   }
 
   .credit-item .credit-name {
     font-weight: 600;
     color: var(--white);
-    font-size: 9px;
+    font-size: 14px;
   }
 
   .credit-item .credit-role {
     color: var(--gray);
-    font-size: 8px;
+    font-size: 12px;
   }
 
   .credit-item.venue-highlight .credit-name {
@@ -451,23 +446,23 @@
   .union-badge {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
     background: var(--union-bg);
     border: 1px solid var(--union-border);
-    padding: 3px 10px;
-    border-radius: 2px;
+    padding: 5px 14px;
+    border-radius: 3px;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--gold);
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-top: 8px;
+    margin-top: 16px;
   }
 
   .union-badge .dot {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     background: var(--gold);
     border-radius: 50%;
     opacity: 0.7;
@@ -485,27 +480,19 @@
     outline-offset: 2px;
   }
 
-  /* ── Print ─────────────────────────────────────────── */
-  @media print {
-    body { padding: 0; background: none; }
-    .page { box-shadow: none; max-height: 11in; }
-    .skip-link { display: none; }
-  }
-
   /* ── Mobile ────────────────────────────────────────── */
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 680px) {
     body {
       padding: 0;
       align-items: stretch;
     }
 
     .page {
-      width: 100%;
-      min-height: auto;
-      max-height: none;
+      max-width: 100%;
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
       overflow: visible;
+      border-radius: 0;
     }
 
     .page::before,
@@ -519,62 +506,27 @@
       grid-row: auto;
       border-right: none;
       border-bottom: 1px solid var(--sidebar-border);
-      padding: 24px 20px 20px;
+      padding: 28px 24px 24px;
     }
 
     .sidebar::before { display: none; }
 
-    .name-block h1 {
-      font-size: 28px;
-    }
-
-    .title-line {
-      font-size: 10px;
-      letter-spacing: 2.5px;
-    }
-
-    .contact-list { font-size: 12px; }
-    .contact-list .label { font-size: 10px; min-width: 52px; }
-
-    .skill-group-label { font-size: 11px; }
-    .skill-tag { font-size: 11px; padding: 4px 10px; }
-
-    .sidebar-section-title { font-size: 15px; }
-
-    .cert-list { font-size: 12px; }
-    .education-item { font-size: 12px; }
-    .education-item .school { font-size: 12px; }
-    .education-item .detail { font-size: 11px; }
-
-    .union-badge { font-size: 11px; padding: 5px 14px; }
+    .name-block h1 { font-size: 34px; }
+    .title-line { font-size: 12px; }
 
     .main {
-      padding: 24px 20px;
+      padding: 28px 24px;
     }
-
-    .section-title { font-size: 17px; }
-
-    .summary-text { font-size: 14px; line-height: 1.6; }
 
     .job-header {
       flex-direction: column;
       gap: 2px;
     }
 
-    .job-title { font-size: 15px; }
-    .job-date { font-size: 11px; }
-    .job-company { font-size: 12px; }
-    .job-bullets { font-size: 13px; }
-    .job-bullets li { padding-left: 14px; margin-bottom: 4px; }
-    .job-bullets li::before { top: 8px; }
-
     .credits-grid {
       grid-template-columns: 1fr;
       gap: 6px;
-      font-size: 13px;
     }
-
-    .credit-item .credit-name { font-size: 13px; }
   }
 
   /* ── Reduced motion ────────────────────────────────── */
