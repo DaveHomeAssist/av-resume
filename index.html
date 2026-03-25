@@ -34,6 +34,12 @@
     --rule-gradient: rgba(138, 104, 24, 0.3);
     --job-bar: var(--gold);
     --bullet-border: var(--gold);
+    --panel-bg: linear-gradient(180deg, rgba(138, 104, 24, 0.08) 0%, rgba(138, 104, 24, 0.03) 100%);
+    --panel-border: rgba(138, 104, 24, 0.18);
+    --panel-shadow: 0 18px 40px rgba(138, 104, 24, 0.08);
+    --action-bg: var(--gold);
+    --action-text: #13110d;
+    --surface-muted: rgba(138, 104, 24, 0.04);
     color-scheme: light dark;
   }
 
@@ -59,6 +65,12 @@
     --rule-gradient: rgba(212, 168, 67, 0.3);
     --job-bar: var(--gold);
     --bullet-border: var(--gold);
+    --panel-bg: linear-gradient(180deg, rgba(212, 168, 67, 0.11) 0%, rgba(212, 168, 67, 0.04) 100%);
+    --panel-border: rgba(212, 168, 67, 0.2);
+    --panel-shadow: 0 22px 48px rgba(0, 0, 0, 0.28);
+    --action-bg: var(--gold);
+    --action-text: #14110a;
+    --surface-muted: rgba(212, 168, 67, 0.05);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -214,6 +226,17 @@
     gap: 8px;
   }
 
+  .contact-list a {
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .contact-list a:hover,
+  .contact-list a:focus-visible {
+    border-bottom-color: var(--gold);
+  }
+
   .contact-list .label {
     color: var(--gray);
     font-weight: 500;
@@ -261,6 +284,41 @@
     font-weight: 600;
   }
 
+  .skills-disclosure {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .skills-disclosure summary {
+    display: none;
+  }
+
+  .skills-disclosure summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .skills-disclosure summary::before {
+    content: '+';
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--tag-border);
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .skills-disclosure[open] summary::before {
+    content: '−';
+  }
+
+  .skills-disclosure-body {
+    margin-top: 14px;
+  }
+
   .cert-list {
     list-style: none;
     font-size: 14px;
@@ -305,6 +363,148 @@
 
   .section {
     margin-bottom: 28px;
+  }
+
+  .hero-panel {
+    margin-bottom: 34px;
+    padding: 26px 26px 22px;
+    border: 1px solid var(--panel-border);
+    background: var(--panel-bg);
+    border-radius: 18px;
+    box-shadow: var(--panel-shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-panel::after {
+    content: '';
+    position: absolute;
+    inset: auto -60px -70px auto;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, var(--glow-gold) 0%, transparent 72%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 34px;
+    line-height: 0.98;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: var(--white);
+    max-width: 12ch;
+    margin-bottom: 14px;
+  }
+
+  .hero-lede {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--cream);
+    max-width: 60ch;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: var(--action-bg);
+    color: var(--action-text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  }
+
+  .cta-link.secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--tag-border);
+    box-shadow: none;
+  }
+
+  .signal-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    margin-top: 18px;
+  }
+
+  .signal-pill {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--tag-border);
+    background: var(--surface-muted);
+    color: var(--cream);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .signal-pill strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .proof-card {
+    padding: 16px 16px 15px;
+    border-radius: 14px;
+    border: 1px solid var(--tag-border);
+    background: rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(8px);
+  }
+
+  .proof-kicker {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .proof-value {
+    font-size: 19px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .proof-copy {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--cream);
   }
 
   .section-title {
@@ -442,6 +642,10 @@
     color: var(--gold);
   }
 
+  .mobile-action-bar {
+    display: none;
+  }
+
   .union-badge {
     display: inline-flex;
     align-items: center;
@@ -508,16 +712,17 @@
   /* ── Mobile ────────────────────────────────────────── */
   @media screen and (max-width: 680px) {
     body {
-      padding: 0;
+      padding: 0 0 88px;
       align-items: stretch;
     }
 
     .page {
       max-width: 100%;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto;
+      display: flex;
+      flex-direction: column;
       overflow: visible;
       border-radius: 0;
+      min-height: 100vh;
     }
 
     .page::before,
@@ -527,20 +732,64 @@
 
     .corner { display: none; }
 
+    .main {
+      order: 1;
+      padding: 28px 20px 40px;
+    }
+
     .sidebar {
+      order: 2;
       grid-row: auto;
       border-right: none;
-      border-bottom: 1px solid var(--sidebar-border);
-      padding: 28px 24px 24px;
+      border-bottom: none;
+      border-top: 1px solid var(--sidebar-border);
+      padding: 24px 20px 32px;
     }
 
     .sidebar::before { display: none; }
 
     .name-block h1 { font-size: 34px; }
     .title-line { font-size: 12px; }
-
-    .main {
-      padding: 28px 24px;
+    .hero-panel {
+      padding: 22px 18px 18px;
+      margin-bottom: 28px;
+      border-radius: 16px;
+    }
+    .hero-title {
+      font-size: 31px;
+      max-width: none;
+    }
+    .hero-lede,
+    .summary-text {
+      font-size: 16px;
+      line-height: 1.78;
+    }
+    .cta-row {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .cta-link {
+      width: 100%;
+      min-height: 50px;
+    }
+    .signal-list {
+      gap: 7px;
+    }
+    .signal-pill {
+      font-size: 12px;
+      width: fit-content;
+      max-width: 100%;
+    }
+    .proof-grid {
+      grid-template-columns: 1fr;
+    }
+    .section {
+      margin-bottom: 32px;
+    }
+    .section-title {
+      font-size: 20px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
     }
 
     .job-header {
@@ -548,9 +797,89 @@
       gap: 2px;
     }
 
+    .job {
+      padding-left: 14px;
+    }
+
+    .job-title {
+      font-size: 18px;
+      line-height: 1.1;
+    }
+
+    .job-date {
+      font-size: 12px;
+    }
+
+    .job-bullets {
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
     .credits-grid {
       grid-template-columns: 1fr;
       gap: 6px;
+    }
+
+    .contact-list li {
+      align-items: flex-start;
+    }
+
+    .skills-disclosure {
+      margin-top: 12px;
+      border-top: 1px solid var(--tag-border);
+      padding-top: 12px;
+    }
+
+    .skills-disclosure summary {
+      list-style: none;
+      cursor: pointer;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mobile-action-bar {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 90;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 18px;
+      border: 1px solid var(--panel-border);
+      background: color-mix(in srgb, var(--black) 88%, transparent);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .mobile-action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      background: var(--action-bg);
+      color: var(--action-text);
+    }
+
+    .mobile-action-link.secondary {
+      background: transparent;
+      border: 1px solid var(--tag-border);
+      color: var(--white);
     }
   }
 
@@ -578,10 +907,10 @@
       <div class="title-line" role="doc-subtitle">Video &amp; Lighting Technician</div>
     </div>
 
-    <div class="sidebar-section">
+    <div class="sidebar-section" id="contact">
       <h2 class="sidebar-section-title">Contact</h2>
       <ul class="contact-list">
-        <li><span class="label">Email</span> daverobertson9353@gmail.com</li>
+        <li><span class="label">Email</span> <a href="mailto:daverobertson9353@gmail.com">daverobertson9353@gmail.com</a></li>
         <li><span class="label">Union</span> IATSE Local 8</li>
         <li><span class="label">Base</span> Philadelphia, PA</li>
       </ul>
@@ -613,25 +942,6 @@
       </div>
 
       <div class="skill-group">
-        <div class="skill-group-label">Lighting Consoles</div>
-        <div class="skill-tags">
-          <span class="skill-tag">ETC Eos / Apex / Ti / Ion</span>
-          <span class="skill-tag">MA2 / MA3</span>
-          <span class="skill-tag">Hog 4</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-label">Electrical / Rigging</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Three Phase Distro</span>
-          <span class="skill-tag">Camlock</span>
-          <span class="skill-tag">Truss &amp; Motors</span>
-          <span class="skill-tag">Fall Protection</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
         <div class="skill-group-label">Leadership</div>
         <div class="skill-tags">
           <span class="skill-tag highlight">Crew Coordination</span>
@@ -640,6 +950,30 @@
           <span class="skill-tag">Teleprompter Op</span>
         </div>
       </div>
+
+      <details class="skills-disclosure" data-mobile-collapsed open>
+        <summary>More systems, consoles, and rigging</summary>
+        <div class="skills-disclosure-body">
+          <div class="skill-group">
+            <div class="skill-group-label">Lighting Consoles</div>
+            <div class="skill-tags">
+              <span class="skill-tag">ETC Eos / Apex / Ti / Ion</span>
+              <span class="skill-tag">MA2 / MA3</span>
+              <span class="skill-tag">Hog 4</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-label">Electrical / Rigging</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Three Phase Distro</span>
+              <span class="skill-tag">Camlock</span>
+              <span class="skill-tag">Truss &amp; Motors</span>
+              <span class="skill-tag">Fall Protection</span>
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="sidebar-section">
@@ -669,6 +1003,42 @@
 
   <!-- RIGHT MAIN -->
   <main class="main" id="main-content">
+    <section class="hero-panel" aria-labelledby="selection-title">
+      <p class="hero-eyebrow">Philadelphia, PA · IATSE Local 8 · Arena / Theatrical / Corporate / Broadcast</p>
+      <h2 class="hero-title" id="selection-title">Selected for signal-heavy live shows that need calm crew leadership.</h2>
+      <p class="hero-lede">
+        Union stage technician and crew lead with nine plus years operating IMAG, LED walls, projection, switching, and signal systems under show conditions. Trusted by touring leads, house teams, and national event crews to keep video and lighting infrastructure moving cleanly.
+      </p>
+      <div class="cta-row" aria-label="Primary actions">
+        <a class="cta-link" href="mailto:daverobertson9353@gmail.com">Email David</a>
+        <a class="cta-link secondary" href="#experience">View Experience</a>
+      </div>
+      <ul class="signal-list" aria-label="At a glance">
+        <li class="signal-pill"><strong>IATSE Local 8</strong></li>
+        <li class="signal-pill"><strong>Philadelphia Based</strong></li>
+        <li class="signal-pill"><strong>IMAG + LED Walls</strong></li>
+        <li class="signal-pill"><strong>Touring Integration</strong></li>
+        <li class="signal-pill"><strong>Broadcast + Corporate</strong></li>
+      </ul>
+      <div class="proof-grid" aria-label="Selection highlights">
+        <article class="proof-card">
+          <p class="proof-kicker">Experience</p>
+          <p class="proof-value">9+ Years</p>
+          <p class="proof-copy">Arena, theatrical, corporate, and broadcast production across union and freelance calls.</p>
+        </article>
+        <article class="proof-card">
+          <p class="proof-kicker">Best Used For</p>
+          <p class="proof-value">Touring + House Systems</p>
+          <p class="proof-copy">Bridges visiting leads and venue infrastructure without losing pace during load in, show call, or load out.</p>
+        </article>
+        <article class="proof-card">
+          <p class="proof-kicker">Proof</p>
+          <p class="proof-value">Major Venue + National Event Credits</p>
+          <p class="proof-copy">The Mann Center, Wells Fargo Center, NASA / Kennedy Space Center, and nationally televised political events.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section">
       <h2 class="section-title">Profile</h2>
       <p class="summary-text">
@@ -676,7 +1046,7 @@
       </p>
     </section>
 
-    <section class="section">
+    <section class="section" id="experience">
       <h2 class="section-title">Experience</h2>
 
       <article class="job">
@@ -712,7 +1082,7 @@
       <article class="job">
         <div class="job-header">
           <span class="job-title">Head Electrician</span>
-          <span class="job-date">2019 — 2022</span>
+          <span class="job-date">2025 — PRESENT</span>
         </div>
         <div class="job-company">Lansdowne Theater</div>
         <ul class="job-bullets">
@@ -722,7 +1092,7 @@
       </article>
     </section>
 
-    <section class="section">
+    <section class="section" id="credits">
       <h2 class="section-title">Notable Credits</h2>
       <div class="credits-grid">
         <div class="credit-item venue-highlight">
@@ -759,6 +1129,10 @@
     </section>
   </main>
 </div>
+<div class="mobile-action-bar" aria-label="Quick actions">
+  <a class="mobile-action-link" href="mailto:daverobertson9353@gmail.com">Email David</a>
+  <a class="mobile-action-link secondary" href="#credits">See Credits</a>
+</div>
 <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
   <span class="theme-toggle-icon" aria-hidden="true"></span>
   <span class="theme-toggle-label"></span>
@@ -769,14 +1143,38 @@
     var btn = document.querySelector('.theme-toggle');
     var icon = btn.querySelector('.theme-toggle-icon');
     var label = btn.querySelector('.theme-toggle-label');
+    var disclosures = document.querySelectorAll('[data-mobile-collapsed]');
     var stored = localStorage.getItem('theme');
     if (stored === 'dark') root.setAttribute('data-theme', 'dark');
+
+    function syncDisclosureState(isMobile) {
+      disclosures.forEach(function (details) {
+        if (isMobile) {
+          details.removeAttribute('open');
+        } else {
+          details.setAttribute('open', '');
+        }
+      });
+    }
 
     function update() {
       var dark = root.getAttribute('data-theme') === 'dark';
       icon.textContent = dark ? '\u2600' : '\u263D';
       label.textContent = dark ? 'Light' : 'Dark';
       btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    var mobileQuery = window.matchMedia('(max-width: 680px)');
+    syncDisclosureState(mobileQuery.matches);
+
+    if (mobileQuery.addEventListener) {
+      mobileQuery.addEventListener('change', function (event) {
+        syncDisclosureState(event.matches);
+      });
+    } else if (mobileQuery.addListener) {
+      mobileQuery.addListener(function (event) {
+        syncDisclosureState(event.matches);
+      });
     }
 
     btn.addEventListener('click', function () {
