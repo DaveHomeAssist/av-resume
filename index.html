@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="David Robertson — IATSE Local 8 Video &amp; Lighting Technician. Resume and professional credits.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="no-referrer">
 <title>David Robertson — Video &amp; Lighting Technician</title>
@@ -12,14 +12,39 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Light mode (default) */
   :root {
+    --bg: #f5f3ef;
+    --black: #ffffff;
+    --white: #1a1a1a;
+    --cream: #444;
+    --gold: #8a6818;
+    --gold-dim: #6d5212;
+    --gray: #777;
+    --sidebar-bg: linear-gradient(180deg, #eae7e0 0%, #e4e0d8 100%);
+    --sidebar-border: rgba(138, 104, 24, 0.2);
+    --tag-border: rgba(138, 104, 24, 0.3);
+    --tag-bg: rgba(138, 104, 24, 0.06);
+    --tag-hl-border: rgba(138, 104, 24, 0.5);
+    --tag-hl-bg: rgba(138, 104, 24, 0.12);
+    --glow-gold: rgba(138, 104, 24, 0.06);
+    --glow-blue: rgba(58, 110, 165, 0.04);
+    --union-bg: rgba(138, 104, 24, 0.08);
+    --union-border: rgba(138, 104, 24, 0.3);
+    --rule-gradient: rgba(138, 104, 24, 0.3);
+    --job-bar: var(--gold);
+    --bullet-border: var(--gold);
+    color-scheme: light dark;
+  }
+
+  /* Dark mode (via toggle) */
+  [data-theme="dark"] {
     --bg: #1a1a1a;
     --black: #0a0a0a;
     --white: #f0ece4;
     --cream: #d8d2c6;
     --gold: #d4a843;
     --gold-dim: #c49a38;
-    --charcoal: #1a1a1a;
     --gray: #aaa;
     --sidebar-bg: linear-gradient(180deg, #111 0%, #0d0d0d 100%);
     --sidebar-border: rgba(212, 168, 67, 0.15);
@@ -34,32 +59,6 @@
     --rule-gradient: rgba(212, 168, 67, 0.3);
     --job-bar: var(--gold);
     --bullet-border: var(--gold);
-    color-scheme: light dark;
-  }
-
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #f5f3ef;
-      --black: #ffffff;
-      --white: #1a1a1a;
-      --cream: #444;
-      --gold: #8a6818;
-      --gold-dim: #6d5212;
-      --gray: #777;
-      --sidebar-bg: linear-gradient(180deg, #eae7e0 0%, #e4e0d8 100%);
-      --sidebar-border: rgba(138, 104, 24, 0.2);
-      --tag-border: rgba(138, 104, 24, 0.3);
-      --tag-bg: rgba(138, 104, 24, 0.06);
-      --tag-hl-border: rgba(138, 104, 24, 0.5);
-      --tag-hl-bg: rgba(138, 104, 24, 0.12);
-      --glow-gold: rgba(138, 104, 24, 0.06);
-      --glow-blue: rgba(58, 110, 165, 0.04);
-      --union-bg: rgba(138, 104, 24, 0.08);
-      --union-border: rgba(138, 104, 24, 0.3);
-      --rule-gradient: rgba(138, 104, 24, 0.3);
-      --job-bar: var(--gold);
-      --bullet-border: var(--gold);
-    }
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -474,6 +473,32 @@
   .corner-bl { bottom: 10px; left: 10px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
   .corner-br { bottom: 10px; right: 10px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
 
+  /* ── Theme toggle ───────────────────────────────────── */
+  .theme-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 100;
+    background: var(--black);
+    border: 1px solid var(--tag-border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.15s;
+  }
+  .theme-toggle:hover {
+    opacity: 0.8;
+  }
+
   /* ── Focus visible ─────────────────────────────────── */
   :focus-visible {
     outline: 2px solid var(--gold);
@@ -734,5 +759,40 @@
     </section>
   </main>
 </div>
+<button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+  <span class="theme-toggle-icon" aria-hidden="true"></span>
+  <span class="theme-toggle-label"></span>
+</button>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.querySelector('.theme-toggle');
+    var icon = btn.querySelector('.theme-toggle-icon');
+    var label = btn.querySelector('.theme-toggle-label');
+    var stored = localStorage.getItem('theme');
+    if (stored === 'dark') root.setAttribute('data-theme', 'dark');
+
+    function update() {
+      var dark = root.getAttribute('data-theme') === 'dark';
+      icon.textContent = dark ? '\u2600' : '\u263D';
+      label.textContent = dark ? 'Light' : 'Dark';
+      btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    btn.addEventListener('click', function () {
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      update();
+    });
+
+    update();
+  })();
+</script>
 </body>
 </html>
