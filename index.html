@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Robertson — Head of Video</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f0ece4;
+    --cream: #e8e2d6;
+    --gold: #d4a843;
+    --gold-dim: #b8922e;
+    --blue: #3a6ea5;
+    --charcoal: #1a1a1a;
+    --gray: #888;
+    --accent-glow: rgba(212, 168, 67, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: #1a1a1a;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    max-height: 11in;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 2.6in 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .page::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(58, 110, 165, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* LEFT COLUMN */
+  .sidebar {
+    grid-row: 1 / -1;
+    background: linear-gradient(180deg, #111 0%, #0d0d0d 100%);
+    padding: 32px 22px 24px 22px;
+    border-right: 1px solid rgba(212, 168, 67, 0.15);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--gold) 0%, transparent 40%, transparent 60%, var(--gold) 100%);
+    opacity: 0.3;
+  }
+
+  .name-block {
+    margin-bottom: 6px;
+  }
+
+  .name-block h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    letter-spacing: 3px;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .name-block h1 span {
+    color: var(--gold);
+  }
+
+  .title-line {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+  }
+
+  .sidebar-section {
+    margin-top: 16px;
+  }
+
+  .sidebar-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 0;
+  }
+
+  .sidebar-section-title::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+    margin-top: 3px;
+    opacity: 0.5;
+  }
+
+  .contact-list {
+    list-style: none;
+    font-size: 9.5px;
+    line-height: 1.8;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .contact-list .label {
+    color: var(--gray);
+    font-weight: 500;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 48px;
+  }
+
+  .skill-group {
+    margin-bottom: 10px;
+  }
+
+  .skill-group-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .skill-tag {
+    font-size: 8.5px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border: 1px solid rgba(212, 168, 67, 0.2);
+    border-radius: 2px;
+    color: var(--cream);
+    background: rgba(212, 168, 67, 0.04);
+    letter-spacing: 0.3px;
+  }
+
+  .skill-tag.highlight {
+    border-color: rgba(212, 168, 67, 0.45);
+    background: rgba(212, 168, 67, 0.1);
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .cert-list {
+    list-style: none;
+    font-size: 9px;
+    line-height: 1.9;
+    color: var(--cream);
+  }
+
+  .cert-list li::before {
+    content: '▸';
+    color: var(--gold);
+    margin-right: 6px;
+    font-size: 8px;
+  }
+
+  .education-item {
+    font-size: 9px;
+    color: var(--cream);
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+
+  .education-item .school {
+    font-weight: 600;
+    color: var(--white);
+    font-size: 9.5px;
+  }
+
+  .education-item .detail {
+    color: var(--gray);
+    font-size: 8.5px;
+  }
+
+  /* RIGHT COLUMN */
+  .main {
+    padding: 32px 28px 24px 26px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .section {
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(212, 168, 67, 0.3), transparent);
+  }
+
+  .summary-text {
+    font-size: 10px;
+    line-height: 1.65;
+    color: var(--cream);
+    font-weight: 300;
+    max-width: 100%;
+  }
+
+  .job {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 12px;
+  }
+
+  .job::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 3px;
+    height: calc(100% - 4px);
+    background: linear-gradient(180deg, var(--gold), transparent);
+    border-radius: 2px;
+    opacity: 0.4;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+  }
+
+  .job-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.5px;
+  }
+
+  .job-date {
+    font-size: 8.5px;
+    color: var(--gold-dim);
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .job-company {
+    font-size: 9.5px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .job-bullets {
+    list-style: none;
+    font-size: 9px;
+    line-height: 1.6;
+    color: var(--cream);
+    font-weight: 300;
+  }
+
+  .job-bullets li {
+    padding-left: 10px;
+    position: relative;
+    margin-bottom: 1px;
+  }
+
+  .job-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 4px;
+    height: 4px;
+    border: 1px solid var(--gold);
+    border-radius: 1px;
+    transform: rotate(45deg);
+    opacity: 0.5;
+  }
+
+  .credits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 16px;
+    font-size: 9px;
+    line-height: 1.7;
+  }
+
+  .credit-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    color: var(--cream);
+    font-weight: 300;
+  }
+
+  .credit-item .credit-name {
+    font-weight: 600;
+    color: var(--white);
+    font-size: 9px;
+  }
+
+  .credit-item .credit-role {
+    color: var(--gray);
+    font-size: 8px;
+  }
+
+  .credit-item.venue-highlight .credit-name {
+    color: var(--gold);
+  }
+
+  .union-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(212, 168, 67, 0.08);
+    border: 1px solid rgba(212, 168, 67, 0.2);
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .union-badge .dot {
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+
+  .corner { position: absolute; width: 18px; height: 18px; opacity: 0.15; z-index: 2; }
+  .corner-tl { top: 10px; left: 10px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+  .corner-tr { top: 10px; right: 10px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+  .corner-bl { bottom: 10px; left: 10px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+  .corner-br { bottom: 10px; right: 10px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+
+  @media print {
+    body { padding: 0; background: none; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
+    <div class="name-block">
+      <h1>DAVID<br><span>ROBERTSON</span></h1>
+      <div class="title-line">Video &amp; Lighting Technician</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Contact</div>
+      <ul class="contact-list">
+        <li><span class="label">Email</span> daverobertson9353@gmail.com</li>
+        <li><span class="label">Union</span> IATSE Local 8</li>
+        <li><span class="label">Base</span> Philadelphia, PA</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Core Skills</div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Video / Switching</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">ATEM Production Switchers</span>
+          <span class="skill-tag highlight">IMAG Systems</span>
+          <span class="skill-tag highlight">LED Walls</span>
+          <span class="skill-tag highlight">Pro Video Player (PVP)</span>
+          <span class="skill-tag">Projection / Mapping</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Signal / Networking</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">SDI / ST Fiber / SMPTE</span>
+          <span class="skill-tag">sACN</span>
+          <span class="skill-tag">Art Net</span>
+          <span class="skill-tag">DMX512-A</span>
+          <span class="skill-tag">Managed Switches</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Lighting Consoles</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ETC Eos / Apex / Ti / Ion</span>
+          <span class="skill-tag">MA2 / MA3</span>
+          <span class="skill-tag">Hog 4</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Electrical / Rigging</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Three Phase Distro</span>
+          <span class="skill-tag">Camlock</span>
+          <span class="skill-tag">Truss &amp; Motors</span>
+          <span class="skill-tag">Fall Protection</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">Leadership</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Crew Coordination</span>
+          <span class="skill-tag highlight">Touring Integration</span>
+          <span class="skill-tag">Equipment Inventory</span>
+          <span class="skill-tag">Teleprompter Op</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Education</div>
+      <div class="education-item">
+        <div class="school">Loyola University Maryland</div>
+        <div class="detail">Computer Science Coursework</div>
+      </div>
+      <div class="education-item">
+        <div class="school">Bishop Eustace Preparatory</div>
+        <div class="detail">Class of 2012</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Certifications</div>
+      <ul class="cert-list">
+        <li>OSHA 10</li>
+        <li>MEWP Operator</li>
+        <li>Avolites Titan Training</li>
+        <li>Rigging &amp; Fall Protection (L8)</li>
+      </ul>
+    </div>
+
+    <div class="union-badge"><span class="dot"></span> IATSE LOCAL 8</div>
+  </div>
+
+  <!-- RIGHT MAIN -->
+  <div class="main">
+    <div class="section">
+      <div class="section-title">Profile</div>
+      <p class="summary-text">
+        Union stage technician and crew lead with nine plus years across arena, theatrical, corporate, and broadcast environments. Deep experience with IMAG systems, LED wall deployment, production switching, projection, and video signal routing alongside full lighting operations. Proven track record coordinating local crews and integrating touring production teams at major Philadelphia venues including The Mann Center. Freelance portfolio spans NASA/Kennedy Space Center, AT&T national events, and nationally televised political productions. IATSE Local 8 member known for reliable execution, calm troubleshooting, and cross department flexibility.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Experience</div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Stage Electrician / Video &amp; Lighting Technician</span>
+          <span class="job-date">2016 — PRESENT</span>
+        </div>
+        <div class="job-company">IATSE Local 8</div>
+        <ul class="job-bullets">
+          <li>Operate IMAG, LED wall, and projection systems alongside lighting rigs for concerts, theater, and broadcast</li>
+          <li>Serve as liaison between touring video/lighting leads and house infrastructure at major venues</li>
+          <li>Lead and coordinate local stagehand crews across video, lighting, audio, and carpentry departments</li>
+          <li>Manage signal distribution and routing for SDI, fiber, and multi universe lighting networks</li>
+          <li>Support load in/load out operations and troubleshoot signal flow under show conditions</li>
+          <li>Cross department flexibility: assist audio, carpentry, barricade, and general venue ops as needed</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Owner / Video, Lighting &amp; Teleprompter Technician</span>
+          <span class="job-date">2022 — PRESENT</span>
+        </div>
+        <div class="job-company">Digital Footprints LLC</div>
+        <ul class="job-bullets">
+          <li>Provide video playback, LED integration, lighting, and teleprompter services for corporate, aerospace, and political clients</li>
+          <li>Build show files and integrated video/lighting workflows for hybrid and broadcast events</li>
+          <li>Operate production switchers and coordinate video feeds for multi camera productions</li>
+          <li>Maintain and track professional video and teleprompter equipment inventory</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Head Electrician</span>
+          <span class="job-date">2019 — 2022</span>
+        </div>
+        <div class="job-company">Lansdowne Theater</div>
+        <ul class="job-bullets">
+          <li>Led all venue production operations including video, lighting, and electrical for concerts and touring acts</li>
+          <li>Managed equipment inventory, fixture maintenance, and venue technical documentation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Notable Credits</div>
+      <div class="credits-grid">
+        <div class="credit-item venue-highlight">
+          <span class="credit-name">The Mann Center</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-name">NASA / Kennedy Space Center</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-name">AT&T National Roadshow</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-name">National Political Events</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-name">Metallica</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-name">Lauryn Hill / Nas / Wu Tang</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-name">Lincoln Financial Field</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-name">Wells Fargo Center</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-name">Usher</span>
+        </div>
+        <div class="credit-item">
+          <span class="credit-name">Kimmel Center</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
