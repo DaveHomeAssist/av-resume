@@ -1,6 +1,6 @@
 # AV Resume
 
-David Robertson's professional resume site — an IATSE Local 8 video & lighting technician based in Philadelphia, PA. A single-page, print-and-web-friendly resume covering experience, core skills, and notable credits (The Mann Center, NASA/Kennedy Space Center, national touring and broadcast events).
+David Robertson's professional resume site — an IATSE Local 8 video & lighting technician based in Philadelphia, PA. A single-page, print-and-web-friendly resume covering experience, core skills, and notable credits (FIFA World Cup 26 Philadelphia, The Mann Center, NASA/Kennedy Space Center, national touring and broadcast events).
 
 ## What's here
 
